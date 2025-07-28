@@ -1,0 +1,39 @@
+{% block body %}
+    <div class="d-flex justify-content-center align-items-center mb-3">
+        <h1 class="mb-4">{{movimiento}} de Producto / Servicio</h1>
+    </div>
+    <div class="container mt-4">
+
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {{ form_start(form) }}
+                {% for field in form %}
+                    {% if (field.vars.name != 'confirmar') and (field.vars.name != '_token') %}
+                        <div class="mb-3">
+                            {{ form_label(field, null, {'label_attr': {'class': 'form-label'}}) }}
+                            {{ form_widget(field, {'attr': {'class': (field.vars.block_prefixes[1] == 'choice' or field.vars.block_prefixes[1] == 'entity' ? 'form-select' : 'form-control')}}) }}
+                            {% if field.vars.help is defined and field.vars.help %}
+                                 <small class="form-text text-muted fst-italic">{{ field.vars.help }}</small>
+                                {% endif %}
+                        </div>
+                        {% if field.vars.errors|length > 0 %}
+                            <div class="text-danger">
+                                {{ form_errors(field) }}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+
+                <div class="d-flex justify-content-end">
+                    {{ form_widget(form.confirmar) }}
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-secondary" href="{{ path('producto_servicio_table') }}">Volver al listado</a>
+    </div>
+</div>
+{% endblock %}

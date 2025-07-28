@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Página no Encontrada{% endblock %}
+
+{% block body %}
+<div class="container text-center mt-5">
+    <h1 class="display-1">{{ statusCode }}</h1>
+    <h2 class="mb-4">Lo sentimos, hubo un error al intentar acceder a esta página.</h2>
+    {% set mensajes = {
+      400: 'El servidor no puede devolver una respuesta válida',
+      404: 'Página no encontrada',
+      405: 'Método no permitido',
+      408: 'Tiempo de espera excedido'
+    } %}
+
+    <h4 class="mb-4">{{ mensajes[statusCode] ?? 'Ocurrió un error inesperado' }}</h4>
+    <a href="{{ path('home') }}" class="btn btn-primary mt-3">Volver al Inicio</a> {# Asume que tienes una ruta 'app_home' #}
+</div>
+{% endblock %}
