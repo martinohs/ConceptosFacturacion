@@ -22,8 +22,8 @@ Sigue estos pasos en orden para configurar el entorno de desarrollo.
 ### 1. Clonar el Repositorio
 Clona el proyecto en tu máquina local.
 ```bash
-git clone [URL_DEL_REPOSITORIO]
-cd [NOMBRE_DEL_DIRECTORIO]
+git clone git@github.com:martinohs/ConceptosFacturacion.git
+cd ConceptosFacturacion
 ```
 
 ### 2. Instalar Dependencias
