@@ -82,6 +82,7 @@ final class ProductoServicioController extends AbstractController
     {
         try {
             $productoServicios = $this->psService->findAll();    
+            $contadores = $this->psService->getCantRegistros();
         } catch (\Throwable $th) {
             $this->addFlash('error', 'Ocurrió un error inesperado.');
             $productoServicios = [];
@@ -89,6 +90,7 @@ final class ProductoServicioController extends AbstractController
         
         return $this->render('producto_servicio/table-view.html.twig', [
             'productoServicios' => $productoServicios,
+            'contadores' => $contadores
         ]);
     }
 

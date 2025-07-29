@@ -1,0 +1,44 @@
+    
+    {% block body %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="card-title mb-0">Resumen de Registros</h5>
+        </div>
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <div class="card border-primary h-100">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Hoy</h6>
+                            <p class="card-text display-6">{{ contador.today|default(0) }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-primary h-100">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Última Semana</h6>
+                            <p class="card-text display-6">{{ contador.last_week|default(0) }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-primary h-100">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Último Mes</h6>
+                            <p class="card-text display-6">{{ contador.last_month|default(0) }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card border-primary h-100">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Último Año</h6>
+                            <p class="card-text display-6">{{ contador.last_year|default(0) }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

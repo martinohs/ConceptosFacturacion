@@ -122,6 +122,24 @@ class ProductoServicioService
         }   
     }
 
+    public function getCantRegistros(): array
+    {
+        $today = new \DateTime();
+        $rangos = [
+            'hoy' => (clone $today)->setTime(0, 0, 0)->format('Y-m-d H:i:s'),
+            'ultima_semana' => (clone $today)->modify('-7 days')->format('Y-m-d H:i:s'),
+            'ultimo_mes' => (clone $today)->modify('-1 month')->format('Y-m-d H:i:s'),
+            'ultimo-year' => (clone $today)->modify('-1 year')->format('Y-m-d H:i:s'),
+        ];
+
+        $contadores = [];
+        foreach ($rangos as $rango => $time) {
+            $contadores[$rango] = $this->repository->countByTime($time);
+        }
+
+        return $contadores;
+    }
+
     //>>: En caso de que quiera implementarse una baja, lo mas recomendado es por soft delete (agregar una columna activo: true o false)
     // private function gestionarBaja(ProductoServicio $productoServicio): void
     // {
